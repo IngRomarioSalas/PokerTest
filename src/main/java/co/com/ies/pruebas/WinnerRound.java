@@ -6,8 +6,9 @@ import java.util.Objects;
 public class WinnerRound {
 
     private WinnerHandType winnerHandType;
-    private List<String> compositionWinnerHand;
+    private PokerHand compositionWinnerHand;
     private boolean firstWin;
+    private int valueCardWinner;
 
     public WinnerHandType getWinnerHandType() {
         return winnerHandType;
@@ -16,12 +17,21 @@ public class WinnerRound {
     public void setWinnerHandType(WinnerHandType winnerHandType) {
         this.winnerHandType = winnerHandType;
     }
+    
+    public int getValueCardWinner() {
+		return valueCardWinner;
+	}
 
-    public List<String> getCompositionWinnerHand() {
+    
+    public void setValueCardWinner(int valueCardWinner) {
+		this.valueCardWinner = valueCardWinner;
+	}
+
+    public PokerHand getCompositionWinnerHand() {
         return compositionWinnerHand;
     }
 
-    public void setCompositionWinnerHand(List<String> compositionWinnerHand) {
+    public void setCompositionWinnerHand(PokerHand compositionWinnerHand) {
         this.compositionWinnerHand = compositionWinnerHand;
     }
 
@@ -54,6 +64,8 @@ public class WinnerRound {
     public int hashCode() {
         return Objects.hash(winnerHandType, compositionWinnerHand, firstWin);
     }
+
+	
 
 
 }
