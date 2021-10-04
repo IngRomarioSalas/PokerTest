@@ -6,7 +6,7 @@ import java.util.Objects;
 public class WinnerRound {
 
     private WinnerHandType winnerHandType;
-    private PokerHand compositionWinnerHand;
+    private String compositionWinnerHand;
     private boolean firstWin;
     private int valueCardWinner;
 
@@ -27,11 +27,11 @@ public class WinnerRound {
 		this.valueCardWinner = valueCardWinner;
 	}
 
-    public PokerHand getCompositionWinnerHand() {
+    public String getCompositionWinnerHand() {
         return compositionWinnerHand;
     }
 
-    public void setCompositionWinnerHand(PokerHand compositionWinnerHand) {
+    public void setCompositionWinnerHand(String compositionWinnerHand) {
         this.compositionWinnerHand = compositionWinnerHand;
     }
 
@@ -51,18 +51,18 @@ public class WinnerRound {
         return firstWin == that.firstWin && winnerHandType == that.winnerHandType && Objects.equals(compositionWinnerHand, that.compositionWinnerHand);
     }
 
-    @Override
-    public String toString() {
-        return "WinnerRound{" +
-                "winnerHandType=" + winnerHandType +
-                ", compositionWinnerHand=" + compositionWinnerHand +
-                ", firstWin=" + firstWin +
-                '}';
-    }
+    
 
     @Override
+	public String toString() {
+		return "WinnerRound [winnerHandType=" + winnerHandType + ", compositionWinnerHand=" + compositionWinnerHand
+				+ ", firstWin=" + firstWin + ", valueCardWinner=" + valueCardWinner + "]";
+	}
+    
+
+	@Override
     public int hashCode() {
-        return Objects.hash(winnerHandType, compositionWinnerHand, firstWin);
+        return Objects.hash(winnerHandType, compositionWinnerHand, valueCardWinner, firstWin);
     }
 
 	

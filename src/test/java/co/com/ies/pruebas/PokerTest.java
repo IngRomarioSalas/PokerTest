@@ -167,6 +167,10 @@ class PokerTest {
     @DisplayName("Blanco: 2H 3D 5S 8C KD  Negro: 10C JC QC KC AC Negro gana. - con Escalera Real: Trebol")
     @Test
     void testEscaleraReal2() {
-        fail("no implementado");
+    	PokerHand blanco = PokerHand.of("2H 3D 5S 8C KD");
+        PokerHand negro = PokerHand.of("10C JC QC KC AC");
+        Poker poker = new Poker();
+        WinnerRound winnerRound = poker.playRound(blanco, negro);
+		System.out.println(winnerRound.getWinnerHandType());
     }
 }
