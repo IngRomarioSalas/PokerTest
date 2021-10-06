@@ -51,18 +51,19 @@ public class Hand {
  			}
  		}
  			winner.setWinnerHandType(WinnerHandType.HIGH_CARD);
- 			winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.HIGH_CARD+": "+"con trio "+cardHigh);
+ 			winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.HIGH_CARD+": "+cardHigh);
  			winner.setValueCardWinner(cardHigh);
  			return winner;
 	}
 
 	private static WinnerRound twoPairs(PokerHand hand) {
-		WinnerRound pairs = searchPairs(hand,0);
-		if(pairs!=null) {
-			if(searchPairs(hand,pairs.getValueCardWinner())!=null) {
+		WinnerRound pairs1 = searchPairs(hand,0);
+		if(pairs1!=null) {
+			WinnerRound pairs2 = searchPairs(hand,pairs1.getValueCardWinner());
+			if(pairs2!=null) {
 				WinnerRound winner = new WinnerRound();
 				winner.setWinnerHandType(WinnerHandType.TWO_PAIR);
-				winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.TWO_PAIR+": "+"con par "+pairs.getValueCardWinner());
+				winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.TWO_PAIR+": "+pairs1.getValueCardWinner()+" y "+pairs2.getValueCardWinner());
 				return winner;
 			}
 		}
@@ -73,7 +74,7 @@ public class Hand {
 		if(isStraight(hand)) {
 			WinnerRound winner = new WinnerRound();
 			winner.setWinnerHandType(WinnerHandType.STRAIGHT);
-			winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.FLUSH+": "+hand.card1.stick);
+			winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.STRAIGHT);
 			return winner;
 		}
 		return null;
@@ -95,7 +96,7 @@ public class Hand {
 			if(searchPairs(hand,terna.getValueCardWinner())!=null) {
 				WinnerRound winner = new WinnerRound();
 				winner.setWinnerHandType(WinnerHandType.FULL_HOUSE);
-				winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.FULL_HOUSE+": "+"con trio "+terna.getValueCardWinner());
+				winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.FULL_HOUSE);
 				return winner;
 			}
 			return null;
@@ -196,7 +197,7 @@ public class Hand {
   			return winner;
   		}
   	    }
-  		return winner;
+  		return null;
  	}
 
  	private static WinnerRound searchTerna(PokerHand hand) {
@@ -205,22 +206,21 @@ public class Hand {
   		int firstCard;
   		for(int j=0; j<cardList.size();j++) {
   			int value=0;
-  			int count =1;
+  			int count =0;
   		firstCard = cardList.get(j).value;
-  		for(int i=j+1; i<cardList.size();i++) {
+  		for(int i=j; i<cardList.size();i++) {
   			if(firstCard==cardList.get(i).value) {
   				count +=1;
   				value = firstCard;
   			}
   		}
-  		System.out.println(count);
   		if(count==3) {
   			winner.setWinnerHandType(WinnerHandType.TERNA);
   			winner.setCompositionWinnerHand("gana. - con "+WinnerHandType.TERNA+": "+value);
   			winner.setValueCardWinner(value);
   			return winner;
   		}
-  		return null;
+  		
   	    }
   		return null;
  	}

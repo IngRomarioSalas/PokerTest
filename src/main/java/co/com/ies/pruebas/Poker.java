@@ -10,12 +10,12 @@ public class Poker {
     	white = Hand.searchHandWinner(blanco,1);
     	black = Hand.searchHandWinner(negro,1);
     	
-    	if(white.getWinnerHandType().ordinal()>black.getWinnerHandType().ordinal()) {
+    	if(white.getWinnerHandType().ordinal()<black.getWinnerHandType().ordinal()) {
     		white.setCompositionWinnerHand(" blanco "+white.getCompositionWinnerHand());
     		return white;
     	}
     	
-    	if(white.getWinnerHandType().ordinal()<black.getWinnerHandType().ordinal()) {
+    	if(white.getWinnerHandType().ordinal()>black.getWinnerHandType().ordinal()) {
     		black.setCompositionWinnerHand(" negro "+black.getCompositionWinnerHand());
     		return black;
     	}
